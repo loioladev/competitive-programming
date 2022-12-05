@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+
+#define dbg(x) cout << "[" << #x << " = " << x << "] ";
+#define ff first
+#define ss second
+#define LLINF 0x7FFFFFFFFFFFFFFF
+#define INTINF 0x7FFFFFFF
+
+using namespace std;
+using vi = vector<int>;
+using pii = pair<int, int>;
+using ll = long long;
+using tii = tuple<int, int, int>;
+
+void control(){
+    ll n, m;
+    cin >> n >> m;
+    // Gauss sum
+    ll ans = (n * ((m - 1) + (m - n))) / 2;
+    cout << ans << '\n';
+}
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin >> t;
+    while(t--)
+        control();
+    return 0;
+}
