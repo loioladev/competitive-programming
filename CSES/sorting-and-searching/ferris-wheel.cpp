@@ -13,12 +13,25 @@ using ll = long long;
 using tii = tuple<int, int, int>;
 
 void control(){
-    int n;
-    cin >> n;
+    int n, x;
+    cin >> n >> x;
     vi a(n);
-    for(auto &e : a)
+    for (auto &e : a)
         cin >> e;
-
+    
+    sort(a.begin(), a.end());
+    int ans = 0;
+    for (int i = 0, j = n-1; i <= j;){
+        if (a[i] + a[j] <= x){
+            ans++;
+            i++,j--;
+        }
+        else{
+            ans++;
+            j--;
+        }
+    }
+    cout << ans << '\n';
     return;
 }
 

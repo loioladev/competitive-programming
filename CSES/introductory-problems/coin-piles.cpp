@@ -13,9 +13,20 @@ using ll = long long;
 using tii = tuple<int, int, int>;
 
 void control(){
-    int x, y;
-    cin >> x >> y;
-    
+    int a, b;
+    cin >> a >> b;
+    int x = ((2 * a) - b) / 3;
+    int y = a - (2 * x);
+
+    if (x < 0 || y < 0){
+        cout << "NO\n";
+        return;
+    }
+
+    if (2 * y + x == b && 2 * x + y == a)
+        cout << "YES\n";
+    else
+        cout << "NO\n";
     return;
 }
 

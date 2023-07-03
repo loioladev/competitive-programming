@@ -13,12 +13,16 @@ using ll = long long;
 using tii = tuple<int, int, int>;
 
 void control(){
-    int n;
-    cin >> n;
+    int n, m, k;
+    cin >> n >> m >> k;
     vi a(n);
-    for(auto &e : a)
+    for (auto &e : a)
+        cin >> e;
+    vi b(m);
+    for (auto &e : b)
         cin >> e;
 
+    
     return;
 }
 

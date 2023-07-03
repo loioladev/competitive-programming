@@ -16,9 +16,12 @@ void control(){
     int n;
     cin >> n;
     vi a(n);
-    for(auto &e : a)
+    for (auto &e : a)
         cin >> e;
-
+    set<int> ans;
+    for (auto &e : a)
+        ans.insert(e);
+    cout << ans.size() << '\n';
     return;
 }
 
