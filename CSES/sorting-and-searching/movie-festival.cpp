@@ -1,51 +1,48 @@
 #include <bits/stdc++.h>
-
+ 
 #define dbg(x) cout << "[" << #x << " = " << x << "] ";
 #define ff first
 #define ss second
 #define LLINF 0x7FFFFFFFFFFFFFFF
 #define INTINF 0x7FFFFFFF
-
+ 
 using namespace std;
 using vi = vector<int>;
 using pii = pair<int, int>;
 using ll = long long;
 using tii = tuple<int, int, int>;
-
+ 
+bool cmp(pii& a, pii& b){
+    if (a.second > b.second)
+        return false;
+    if (a.second < b.second)
+        return true;
+    if (a.first > b.first)
+        return true;
+    return false;
+}
+ 
 void control(){
-    int n, m, k;
-    cin >> n >> m >> k;
-    vi a(n);
+    int n;
+    cin >> n;
+    vector<pii> a(n);
     for (auto &e : a)
-        cin >> e;
-    vi b(m);
-    for (auto &e : b)
-        cin >> e;
+        cin >> e.first >> e.second;
+ 
+    sort(a.begin(), a.end(), cmp);
 
-    sort(a.rbegin(), a.rend());
-    sort(b.rbegin(), b.rend());
-
+    int last = -1;
     int ans = 0;
-    int p = 0, q = 0;
-    while(p < n && q < m){
-        if (b[q] - k > a[p]){
-            q++;
-            continue;
-        }
-
-        if (b[q] + k >= a[p] && a[p] >= b[q] - k){
+    for (auto &e : a){
+        if (e.first >= last){
+            last = e.second;
             ans++;
-            p++;
-            q++;
-        }
-        else {
-            p++;
         }
     }
     cout << ans << '\n';
     return;
 }
-
+ 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);

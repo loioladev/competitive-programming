@@ -13,36 +13,33 @@ using ll = long long;
 using tii = tuple<int, int, int>;
 
 void control(){
-    int n, m, k;
-    cin >> n >> m >> k;
+    int n;
+    cin >> n;
     vi a(n);
     for (auto &e : a)
         cin >> e;
-    vi b(m);
-    for (auto &e : b)
-        cin >> e;
-
-    sort(a.rbegin(), a.rend());
-    sort(b.rbegin(), b.rend());
-
+    
+    map<int, int> count;
+    for (int i = 0; i < n; i++)
+        count[a[i]] = -1;
+    
+    int start = 0;
     int ans = 0;
-    int p = 0, q = 0;
-    while(p < n && q < m){
-        if (b[q] - k > a[p]){
-            q++;
-            continue;
+    int maxi = 0;
+    for (int i = 0; i < n; i++){
+        if (count[a[i]] >= 0 && start <= count[a[i]]){
+            maxi -= count[a[i]] - start;
+            start = count[a[i]] + 1;
+            count[a[i]] = i;
         }
-
-        if (b[q] + k >= a[p] && a[p] >= b[q] - k){
-            ans++;
-            p++;
-            q++;
+        else{
+            maxi++;
+            count[a[i]] = i;
         }
-        else {
-            p++;
-        }
+        ans = max(maxi, ans);
     }
     cout << ans << '\n';
+
     return;
 }
 
