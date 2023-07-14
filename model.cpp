@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
 
-#define dbg(x) cout << "[" << #x << " = " << x << "] ";
-#define ff first
-#define ss second
 #define LLINF 0x7FFFFFFFFFFFFFFF
 #define INTINF 0x7FFFFFFF
 
