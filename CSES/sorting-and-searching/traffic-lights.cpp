@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-#define ff first
-#define ss second
 #define LLINF 0x7FFFFFFFFFFFFFFF
 #define INTINF 0x7FFFFFFF
 
@@ -12,14 +10,14 @@ using ll = long long;
 using tii = tuple<int, int, int>;
 
 void control(){
-    ll n;
-    cin >> n;
-    for (ll i = 1; i <= n; i++){
-        ll total = ((i * i) * ((i * i) - 1LL)) / 2LL;
-        ll attacks = 4 * (i - 1) * (i - 2);
-        cout << total - attacks << '\n';
-    }
-    return;
+    int x, n;
+    cin >> x >> n;
+    vi a(n);
+    for (auto &e : a)
+        cin >> e;
+
+    
+
 }
 
 int main(){

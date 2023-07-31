@@ -15,11 +15,25 @@ using tii = tuple<int, int, int>;
 void control(){
     int n, m;
     cin >> n >> m;
-    vi a(n), b(m);
-    for (auto &e : a)
-        cin >> e;
-    for (auto &e : b)
-        cin >> e;
+    multiset<int> tickets;
+    for (int i = 0; i < n; i++){
+        int x;
+        cin >> x;
+        tickets.insert(x);
+    }
+
+    for (int i = 0; i < m; i++){
+        int p;
+        cin >> p;
+
+        multiset<int>::iterator it = tickets.upper_bound(p);
+        if (it == tickets.begin())
+            cout << "-1\n";
+        else{
+            cout << *(--it) << '\n';
+            tickets.erase(it);
+        }
+    }
 
     return;
 }
