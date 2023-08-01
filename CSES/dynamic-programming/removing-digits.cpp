@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
 
-#define dbg(x) cout << "[" << #x << " = " << x << "] ";
-#define ff first
-#define ss second
 #define LLINF 0x7FFFFFFFFFFFFFFF
 #define INTINF 0x7FFFFFFF
 
@@ -12,25 +9,29 @@ using pii = pair<int, int>;
 using ll = long long;
 using tii = tuple<int, int, int>;
 
-int recursive(vector<ll>& dp, int value){
-    if (value <= 0)
+int recursive(vi& dp, int value) {
+    if (value == 0)
         return 0;
     
-    if (dp[value] != -1)
+    if (dp[value] != 0)
         return dp[value];
     
-    for (int i = 1; i <= 6; i++)
-        dp[value] += recursive(dp, value - i);
-    
-    return dp[value];
+    int ans = INTINF;
+    string aux = to_string(value);
+    for (auto &e : aux){
+        if (e == '0')
+            continue;
+        int number = e - '0';
+        ans = min(ans, recursive(dp, value - number) + 1);
+    }
+    return dp[value] = ans;
 }
 
 void control(){
     int n;
     cin >> n;
-    vector<ll> dp(n+1, -1);
-    recursive(dp, n);
-    cout << dp[n] << '\n';
+    vi dp(n + 10);
+    cout << recursive(dp, n) << '\n';
     return;
 }
 

@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
 
-#define dbg(x) cout << "[" << #x << " = " << x << "] ";
-#define ff first
-#define ss second
 #define LLINF 0x7FFFFFFFFFFFFFFF
 #define INTINF 0x7FFFFFFF
 
@@ -12,9 +9,17 @@ using pii = pair<int, int>;
 using ll = long long;
 using tii = tuple<int, int, int>;
 
+
 void control(){
-    int n;
-    cin >> n;
+    int n, x;
+    cin >> n >> x;
+    vi h(n), s(n);
+    for (auto &e : h)
+        cin >> e;
+    for (auto &e : s)
+        cin >> e;
+
+    return;
 }
 
 int main(){
