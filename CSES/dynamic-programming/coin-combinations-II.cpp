@@ -10,9 +10,8 @@ using ll = long long;
 using tii = tuple<int, int, int>;
 
 int n, x;
-ll mod = 1e9 + 7;
-
-int recursive(vector<ll>& dp, vector<ll>& c, ll sum) {
+int mod = 1e9 + 7;
+int recursive(vector<ll>& dp, vector<ll>& c, ll sum, int last) {
     if (sum > x)
         return 0;
 
@@ -24,7 +23,8 @@ int recursive(vector<ll>& dp, vector<ll>& c, ll sum) {
     
     ll ans = 0;
     for (int i = 0; i < n; i++)
-        ans += recursive(dp, c, sum + c[i]);
+        if (c[i] >= last)
+            ans += recursive(dp, c, sum + c[i], c[i]);
 
     ans %= mod;
     return dp[sum] = ans;
@@ -36,7 +36,10 @@ void control(){
     for (auto &e : c)
         cin >> e;
     vector<ll> dp(x, -1);
-    recursive(dp, c, 0);
+    sort(c.begin(), c.end());
+    recursive(dp, c, 0, 0);
+    for (auto &e : dp)
+        cout << e << " ";
     cout << dp[0] << '\n';
     return;
 }

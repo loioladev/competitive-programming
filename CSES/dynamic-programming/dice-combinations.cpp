@@ -12,25 +12,32 @@ using pii = pair<int, int>;
 using ll = long long;
 using tii = tuple<int, int, int>;
 
+int n;
+int mod = 1e9 + 7;
+
 int recursive(vector<ll>& dp, int value){
-    if (value <= 0)
+    if (value > n)
         return 0;
+    
+    if (value == n)
+        return 1;
     
     if (dp[value] != -1)
         return dp[value];
-    
-    for (int i = 1; i <= 6; i++)
-        dp[value] += recursive(dp, value - i);
-    
-    return dp[value];
+
+    ll ans = 0;
+    for (int i = 1; i <= 6; i++){
+        ans += recursive(dp, value + i);
+        ans %= mod;
+    }
+    return dp[value] = ans;
 }
 
 void control(){
-    int n;
     cin >> n;
-    vector<ll> dp(n+1, -1);
-    recursive(dp, n);
-    cout << dp[n] << '\n';
+    vector<ll> dp(n, -1);
+    recursive(dp, 0);
+    cout << dp[0] << '\n';
     return;
 }
 
