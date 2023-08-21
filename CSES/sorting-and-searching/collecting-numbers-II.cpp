@@ -13,24 +13,7 @@ using ll = long long;
 using tii = tuple<int, int, int>;
 
 void control(){
-    int n;
-    cin >> n;
-    vector<ll> a(n);
-    for (auto &e : a)   
-        cin >> e;
     
-    ll m = -INTINF;
-    ll sum = 0;
-    for (int i = 0; i < n; i++){
-
-        m = max(a[i], m);
-        sum += a[i];
-        if (sum >= 0)
-            m = max(sum, m);
-        else
-            sum = 0;
-    }
-    cout << m << "\n";
     return;
 }
 

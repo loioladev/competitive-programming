@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
 
+#define dbg(x) cout << "[" << #x << " = " << x << "] ";
+#define ff first
+#define ss second
 #define LLINF 0x7FFFFFFFFFFFFFFF
 #define INTINF 0x7FFFFFFF
 
@@ -15,9 +18,8 @@ void control(){
     vi a(n);
     for (auto &e : a)
         cin >> e;
-
     
-    
+    sort(a.begin(), a.end());
     return;
 }
 
